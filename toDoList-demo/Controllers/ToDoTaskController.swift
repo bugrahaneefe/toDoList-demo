@@ -8,42 +8,82 @@
 import UIKit
 import Firebase
 
-class ToDoTaskController: UIViewController {
 
+class ToDoTaskController: UIViewController {
+    
     
     @IBOutlet weak var tableView: UITableView!
-
+    
     let db = Firestore.firestore()
+    
     
     var toDoList: [todolist] = []
     
-//    todolist(sender: (Auth.auth().currentUser?.email)!, textField: "Get a milk", doneStatus: true),todolist(sender: (Auth.auth().currentUser?.email)!, textField: "Get a milk", doneStatus: false),todolist(sender: (Auth.auth().currentUser?.email)!, textField: "Get a milk", doneStatus: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.hidesBackButton = true
         title = "To Do List"
         
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ToDoListCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-
         
+        loadTasksFromFirestore()
     }
     
-    func loadTasks(){
+    func loadTasksFromFirestore(){
+        toDoList = []
         
+        guard let currentUserEmail = Auth.auth().currentUser?.email else {
+            return
+        }
+        
+        db.collection("tasks").whereField("sender", isEqualTo: currentUserEmail).getDocuments { querySnapshot, error in
+            if let e = error {
+                print("Error getting documents: \(e)")
+            } else {
+                if let queryDocuments = querySnapshot?.documents {
+                    for doc in queryDocuments{
+                        let data = doc.data()
+                        if let senderData = data["sender"] as? String,
+                            let textData = data["textField"] as? String,
+                            let statusData = data["doneStatus"] as? Bool{
+                            
+                            self.toDoList.append(todolist(sender: senderData, textField: textData, doneStatus: statusData))
+                            
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                                
+                                self.tableView.scrollToRow(at: IndexPath(row: self.toDoList.count-1, section: 0), at: .top, animated: true)
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                }
+            }
+            
+        }
     }
     
-    func sendTasks(){
+    func updateTaskInFirestore(_ task: todolist) {
+        db.collection("tasks").document("\(task.textField)_\(task.sender)").setData([
+                "sender": task.sender,
+                "textField": task.textField,
+                "doneStatus": task.doneStatus
+            ]) { error in
+                if let error = error {
+                    print("Error updating task in Firestore: \(error)")
+                } else {
+                    print("Task updated successfully in Firestore")
+                }
+            }
     }
     
     @IBAction func addButton(_ sender: UIButton) {
         toDoList.append(todolist(sender: (Auth.auth().currentUser?.email)!, textField: "Enter a task", doneStatus: false))
-        
-        
-        
-        
         tableView.reloadData()
     }
     
@@ -56,20 +96,30 @@ class ToDoTaskController: UIViewController {
             print("Error signing out: %@", signOutError)
         }
     }
-    
-    
-    
-    
+ 
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension ToDoTaskController: ToDoListCellDelegate{
+    
+    func textFieldDidChange(text: String, in cell: ToDoListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        toDoList[indexPath.row].textField = text
+        
+        updateTaskInFirestore(toDoList[indexPath.row])
+        print("text field changed")
+
     }
-    */
+    
+    func statusButtonTapped(in cell: ToDoListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        toDoList[indexPath.row].doneStatus.toggle()
+        
+        updateTaskInFirestore(toDoList[indexPath.row])
+        print("status button changed")
+        tableView.reloadData()
+    }
+    
 
 }
 
@@ -82,13 +132,16 @@ extension ToDoTaskController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! ToDoListCell
         
+        cell.delegate = self
+
         cell.toDoListTextArea.text = toDoList[indexPath.row].textField
         
         if toDoList[indexPath.row].doneStatus == false{
             cell.statusButton.setImage(UIImage(systemName: "circle"), for: .normal)
-
+            
         }else{
             cell.statusButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
             
@@ -98,5 +151,3 @@ extension ToDoTaskController: UITableViewDataSource{
     }
     
 }
-
-

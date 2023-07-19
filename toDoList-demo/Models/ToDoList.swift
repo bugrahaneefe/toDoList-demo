@@ -8,7 +8,6 @@
 import Foundation
 
 struct todolist {
-    
     let sender: String
     var textField: String
     var doneStatus: Bool
