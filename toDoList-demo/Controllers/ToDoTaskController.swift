@@ -11,12 +11,8 @@ import Firebase
 
 class ToDoTaskController: UIViewController {
     
-    
     @IBOutlet weak var tableView: UITableView!
-    
     let db = Firestore.firestore()
-    
-    
     var toDoList: [todolist] = []
     
     
@@ -27,7 +23,7 @@ class ToDoTaskController: UIViewController {
         title = "To Do List"
         
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "ToDoListCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        tableView.register(UINib(nibName: K.cellClassName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
         loadTasksFromFirestore()
     }
@@ -39,16 +35,16 @@ class ToDoTaskController: UIViewController {
             return
         }
         
-        db.collection("tasks").whereField("sender", isEqualTo: currentUserEmail).getDocuments { querySnapshot, error in
+        db.collection(K.collectionName).whereField(K.sender, isEqualTo: currentUserEmail).getDocuments { querySnapshot, error in
             if let e = error {
                 print("Error getting documents: \(e)")
             } else {
                 if let queryDocuments = querySnapshot?.documents {
                     for doc in queryDocuments{
                         let data = doc.data()
-                        if let senderData = data["sender"] as? String,
-                            let textData = data["textField"] as? String,
-                            let statusData = data["doneStatus"] as? Bool{
+                        if let senderData = data[K.sender] as? String,
+                           let textData = data[K.textField] as? String,
+                           let statusData = data[K.doneStatus] as? Bool{
                             
                             self.toDoList.append(todolist(sender: senderData, textField: textData, doneStatus: statusData))
                             
@@ -69,18 +65,19 @@ class ToDoTaskController: UIViewController {
     }
     
     func updateTaskInFirestore(_ task: todolist) {
-        db.collection("tasks").document("\(task.textField)_\(task.sender)").setData([
-                "sender": task.sender,
-                "textField": task.textField,
-                "doneStatus": task.doneStatus
-            ]) { error in
-                if let error = error {
-                    print("Error updating task in Firestore: \(error)")
-                } else {
-                    print("Task updated successfully in Firestore")
-                }
+        db.collection(K.collectionName).document("\(task.textField)_\(task.sender)").setData([
+            K.sender: task.sender,
+            K.textField: task.textField,
+            K.doneStatus: task.doneStatus
+        ]) { error in
+            if let error = error {
+                print("Error updating task in Firestore: \(error)")
+            } else {
+                print("Task updated successfully in Firestore")
             }
+        }
     }
+    
     
     @IBAction func addButton(_ sender: UIButton) {
         toDoList.append(todolist(sender: (Auth.auth().currentUser?.email)!, textField: "Enter a task", doneStatus: false))
@@ -96,33 +93,8 @@ class ToDoTaskController: UIViewController {
             print("Error signing out: %@", signOutError)
         }
     }
- 
+    
 }
-
-
-extension ToDoTaskController: ToDoListCellDelegate{
-    
-    func textFieldDidChange(text: String, in cell: ToDoListCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        toDoList[indexPath.row].textField = text
-        
-        updateTaskInFirestore(toDoList[indexPath.row])
-        print("text field changed")
-
-    }
-    
-    func statusButtonTapped(in cell: ToDoListCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        toDoList[indexPath.row].doneStatus.toggle()
-        
-        updateTaskInFirestore(toDoList[indexPath.row])
-        print("status button changed")
-        tableView.reloadData()
-    }
-    
-
-}
-
 
 extension ToDoTaskController: UITableViewDataSource{
     
@@ -133,17 +105,17 @@ extension ToDoTaskController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! ToDoListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! ToDoListCell
         
         cell.delegate = self
-
+        
         cell.toDoListTextArea.text = toDoList[indexPath.row].textField
         
         if toDoList[indexPath.row].doneStatus == false{
-            cell.statusButton.setImage(UIImage(systemName: "circle"), for: .normal)
+            cell.statusButton.setImage(UIImage(systemName: K.circle), for: .normal)
             
         }else{
-            cell.statusButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+            cell.statusButton.setImage(UIImage(systemName: K.circlefill), for: .normal)
             
         }
         
@@ -151,3 +123,30 @@ extension ToDoTaskController: UITableViewDataSource{
     }
     
 }
+
+extension ToDoTaskController: ToDoListCellDelegate{
+    
+    func textFieldDidChange(text: String, in cell: ToDoListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        toDoList[indexPath.row].textField = text
+        
+        updateTaskInFirestore(toDoList[indexPath.row])
+        print("Text Field Changed")
+        
+    }
+    
+    func statusButtonTapped(in cell: ToDoListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        toDoList[indexPath.row].doneStatus.toggle()
+        
+        updateTaskInFirestore(toDoList[indexPath.row])
+        print("Status Button Changed")
+        
+        tableView.reloadData()
+    }
+    
+    
+}
+
+
+

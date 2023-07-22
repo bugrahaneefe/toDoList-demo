@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func getStartedPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToSignInFromBeginning", sender: self)
+        performSegue(withIdentifier: K.signInFromBeg, sender: self)
     }
     
 }

@@ -231,13 +231,6 @@
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forgot Password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVs-yQ-7IR">
-                                <rect key="frame" x="65" y="600" width="260" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
-                                <color key="textColor" red="0.33333333329999998" green="0.51764705879999995" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sK-6N-Fqe">
                                 <rect key="frame" x="85" y="682" width="220" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -253,8 +246,12 @@
                                     <action selector="SignInPressed:" destination="0fe-bj-e6M" eventType="touchUpInside" id="YPc-fC-4UD"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elips" translatesAutoresizingMaskIntoConstraints="NO" id="W08-6f-bJy">
+                                <rect key="frame" x="-29" y="0.0" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eP-VE-A08">
-                                <rect key="frame" x="85.000000000000014" y="716.66666666666663" width="229.33333333333337" height="32.333333333333371"/>
+                                <rect key="frame" x="82.000000000000014" y="754" width="229.33333333333337" height="32.333333333333371"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dont have an account ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="So6-lv-zXC">
                                         <rect key="frame" x="0.0" y="0.0" width="156" height="32.333333333333336"/>
@@ -262,7 +259,7 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21u-bI-mZh">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTx-Vo-aMH">
                                         <rect key="frame" x="156" y="0.0" width="73.333333333333314" height="32.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Sign up">
@@ -270,23 +267,34 @@
                                             <color key="baseForegroundColor" red="0.33333333329999998" green="0.51764705879999995" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="ToSignUpButton:" destination="J52-ch-WHf" eventType="touchUpInside" id="Bx6-up-W5z"/>
+                                            <action selector="ToSignUpButton:" destination="J52-ch-WHf" eventType="touchUpInside" id="JH1-E4-H1J"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elips" translatesAutoresizingMaskIntoConstraints="NO" id="W08-6f-bJy">
-                                <rect key="frame" x="-29" y="0.0" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVJ-0X-i5Z">
+                                <rect key="frame" x="135" y="615" width="143" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Forgot Password ?">
+                                    <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
+                                    <color key="baseForegroundColor" red="0.33333333329999998" green="0.51764705879999995" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="forgotPasswordPressed:" destination="J52-ch-WHf" eventType="touchUpInside" id="rBd-S0-shV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LTx-UP-WEu"/>
                         <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.33333333329999998" green="0.51764705879999995" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LTx-UP-WEu" firstAttribute="trailing" secondItem="5eP-VE-A08" secondAttribute="trailing" constant="78.670000000000002" id="1dn-sw-DgA"/>
-                            <constraint firstItem="LTx-UP-WEu" firstAttribute="bottom" secondItem="5eP-VE-A08" secondAttribute="bottom" constant="20" id="ZaF-Mw-HXO"/>
-                            <constraint firstItem="5eP-VE-A08" firstAttribute="leading" secondItem="LTx-UP-WEu" secondAttribute="leading" constant="85" id="ZeT-eI-3dh"/>
+                            <constraint firstItem="5eP-VE-A08" firstAttribute="centerX" secondItem="cZg-Tl-p8X" secondAttribute="centerX" id="DJT-xK-4AD"/>
+                            <constraint firstItem="LTx-UP-WEu" firstAttribute="bottom" secondItem="5eP-VE-A08" secondAttribute="bottom" constant="-17.333333333333371" id="Fiw-Y3-nYR"/>
+                            <constraint firstItem="5eP-VE-A08" firstAttribute="top" secondItem="cZg-Tl-p8X" secondAttribute="top" constant="754" id="Iex-Je-hZl"/>
+                            <constraint firstItem="5eP-VE-A08" firstAttribute="leading" secondItem="LTx-UP-WEu" secondAttribute="leading" constant="82" id="Owu-IW-GPl"/>
+                            <constraint firstItem="LTx-UP-WEu" firstAttribute="trailing" secondItem="5eP-VE-A08" secondAttribute="trailing" constant="81.670000000000002" id="eiY-kH-X27"/>
+                            <constraint firstItem="5eP-VE-A08" firstAttribute="centerY" secondItem="cZg-Tl-p8X" secondAttribute="centerY" id="yIT-YM-89L"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xde-5c-XxP"/>
@@ -295,12 +303,61 @@
                         <outlet property="passwordText" destination="uGN-lP-zV0" id="P2a-Xt-OAN"/>
                         <segue destination="6zu-S6-Ct6" kind="show" identifier="goToSignUp" id="5Fe-Vk-4GW"/>
                         <segue destination="iDj-A5-gEk" kind="show" identifier="goToToDoList" id="vhZ-ID-Ewq"/>
+                        <segue destination="HR4-fN-28J" kind="presentation" identifier="toPasswordPage" id="hf2-H6-fJu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5X-3G-66d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="0fe-bj-e6M" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="929" y="4"/>
+        </scene>
+        <!--Password View Controller-->
+        <scene sceneID="Xeu-Qw-KkD">
+            <objects>
+                <viewController id="HR4-fN-28J" customClass="PasswordViewController" customModule="toDoList_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HQY-pr-I3P">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PTh-Is-b10">
+                                <rect key="frame" x="46" y="220" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="emailText:" destination="0fe-bj-e6M" eventType="editingDidEnd" id="ofE-Zr-sIJ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnR-i2-ehT">
+                                <rect key="frame" x="134" y="309" width="128" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reset password">
+                                    <backgroundConfiguration key="background" cornerRadius="10">
+                                        <color key="backgroundColor" red="0.33333333329999998" green="0.51764705879999995" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="strokeColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
+                                    <color key="baseForegroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="resetPassword:" destination="HR4-fN-28J" eventType="touchUpInside" id="8l5-Xf-wmD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="F8n-Nf-pob"/>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4bV-90-YPz"/>
+                    <connections>
+                        <outlet property="emailField" destination="PTh-Is-b10" id="s2v-JH-5f3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhg-qC-x4u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="772"/>
         </scene>
         <!--To Do Task Controller-->
         <scene sceneID="p15-e6-azb">

@@ -18,7 +18,6 @@ class ToDoListCell: UITableViewCell {
     @IBOutlet weak var statusButton: UIButton!
     @IBOutlet weak var toDoListTextArea: UITextField!
     
-    let db = Firestore.firestore()
     
     weak var delegate: ToDoListCellDelegate?
 
@@ -28,17 +27,12 @@ class ToDoListCell: UITableViewCell {
         toDoListTextArea.layer.cornerRadius = 15.0
         toDoListTextArea.layer.borderWidth = 1.0
         
-        toDoListTextArea.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        toDoListTextArea.delegate = self
+    }
 
-    }
-    
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        delegate?.textFieldDidChange(text: textField.text ?? "", in: self)
-    }
 
     @IBAction func statusButtonPressed(_ sender: UIButton) {
         delegate?.statusButtonTapped(in: self)
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,6 +42,16 @@ class ToDoListCell: UITableViewCell {
     }
     
     
+    
+}
+
+extension ToDoListCell: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        delegate?.textFieldDidChange(text: textField.text ?? "", in: self)
+//        print("\(textField.text)")
+        return true
+    }
     
 }
 

@@ -29,42 +29,28 @@ class SignUpController: UIViewController {
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {
-        
-        if (passwordField?.text == passwordField2?.text){
-            if let email = emailField.text ,let password = passwordField.text {
-                Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                    if let e = error{
-                        print(e.localizedDescription)
-                        //pop-up screen
-                    }else{
-                        self.performSegue(withIdentifier: "goToSignIn", sender: self)
-                    }
-                }
-            }
-        }
-        
-    }
+           
+           if (passwordField?.text == passwordField2?.text){
+               if let email = emailField.text ,let password = passwordField.text {
+                   Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                       if let e = error{
+                           print(e.localizedDescription)
+                           //pop-up screen
+                       }else{
+                           self.performSegue(withIdentifier: K.goToSignIn, sender: self)
+                       }
+                   }
+               }
+           }
+           
+       }
     
     
     
     @IBAction func goSignInButton(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "goToSignIn", sender: self)
+        performSegue(withIdentifier: K.goToSignIn, sender: self)
         
     }
-    
-   
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
