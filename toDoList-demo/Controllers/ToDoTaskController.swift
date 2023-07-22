@@ -76,6 +76,9 @@ class ToDoTaskController: UIViewController {
                 print("Task updated successfully in Firestore")
             }
         }
+        tableView.reloadData()
+
+
     }
     
     
@@ -142,7 +145,6 @@ extension ToDoTaskController: ToDoListCellDelegate{
         updateTaskInFirestore(toDoList[indexPath.row])
         print("Status Button Changed")
         
-        tableView.reloadData()
     }
     
     
