@@ -242,8 +242,7 @@
                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="SignInButton:" destination="J52-ch-WHf" eventType="touchUpInside" id="E52-AG-w3t"/>
-                                    <action selector="SignInPressed:" destination="0fe-bj-e6M" eventType="touchUpInside" id="YPc-fC-4UD"/>
+                                    <action selector="toSignInButton:" destination="J52-ch-WHf" eventType="touchUpInside" id="Jk0-9A-dIh"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="elips" translatesAutoresizingMaskIntoConstraints="NO" id="W08-6f-bJy">
@@ -267,7 +266,7 @@
                                             <color key="baseForegroundColor" red="0.33333333329999998" green="0.51764705879999995" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="ToSignUpButton:" destination="J52-ch-WHf" eventType="touchUpInside" id="JH1-E4-H1J"/>
+                                            <action selector="toSignUpButton:" destination="J52-ch-WHf" eventType="touchUpInside" id="tah-SI-gr0"/>
                                         </connections>
                                     </button>
                                 </subviews>

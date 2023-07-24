@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		97987E8E2A6BC8B600AE5E54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97987E8D2A6BC8B600AE5E54 /* Constants.swift */; };
 		97987E922A6BD1A500AE5E54 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97987E912A6BD1A500AE5E54 /* PasswordViewController.swift */; };
+		97AD1AE22A6E7B7A00652728 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97AD1AE02A6E7B7A00652728 /* Localizable.strings */; };
 		97D4EED82A65672500315433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D4EED72A65672500315433 /* AppDelegate.swift */; };
 		97D4EEDA2A65672500315433 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D4EED92A65672500315433 /* SceneDelegate.swift */; };
 		97D4EEDC2A65672500315433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D4EEDB2A65672500315433 /* ViewController.swift */; };
@@ -35,6 +36,8 @@
 		4EF34DD81FD626B0EFB5D29F /* Pods_toDoList_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_toDoList_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97987E8D2A6BC8B600AE5E54 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		97987E912A6BD1A500AE5E54 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		97AD1AE12A6E7B7A00652728 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		97AD1AE32A6E7B8E00652728 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		97D4EED42A65672500315433 /* toDoList-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "toDoList-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D4EED72A65672500315433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D4EED92A65672500315433 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		97D4EED62A65672500315433 /* toDoList-demo */ = {
 			isa = PBXGroup;
 			children = (
+				97AD1AE02A6E7B7A00652728 /* Localizable.strings */,
 				97D4EED72A65672500315433 /* AppDelegate.swift */,
 				97D4EED92A65672500315433 /* SceneDelegate.swift */,
 				97D4EEFA2A666AC400315433 /* Models */,
@@ -179,6 +183,7 @@
 				97D4EED12A65672500315433 /* Frameworks */,
 				97D4EED22A65672500315433 /* Resources */,
 				81ED3F4F48D3D3402071FC59 /* [CP] Embed Pods Frameworks */,
+				97AD1AE42A6E7EC500652728 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -238,6 +243,7 @@
 				97D4EEE42A65672700315433 /* LaunchScreen.storyboard in Resources */,
 				97D4EF002A66724F00315433 /* ToDoListCell.xib in Resources */,
 				97D4EEEC2A656C0D00315433 /* Poppins-Medium.ttf in Resources */,
+				97AD1AE22A6E7B7A00652728 /* Localizable.strings in Resources */,
 				97D4EEE12A65672700315433 /* Assets.xcassets in Resources */,
 				97D4EEDF2A65672500315433 /* Main.storyboard in Resources */,
 				97D4EF092A66818300315433 /* GoogleService-Info.plist in Resources */,
@@ -263,6 +269,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-toDoList-demo/Pods-toDoList-demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		97AD1AE42A6E7EC500652728 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
 		};
 		F4497A2BF16A657000B2E404 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -309,6 +332,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		97AD1AE02A6E7B7A00652728 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97AD1AE12A6E7B7A00652728 /* Base */,
+				97AD1AE32A6E7B8E00652728 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		97D4EEDD2A65672500315433 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -457,6 +489,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -485,6 +518,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
