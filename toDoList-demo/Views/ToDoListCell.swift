@@ -34,7 +34,9 @@ class ToDoListCell: UITableViewCell {
 
     }
 
-
+    
+    /// Status button is pressed and calls delegate
+    /// - Parameter sender: UIButton
     @IBAction func statusButtonPressed(_ sender: UIButton) {
         delegate?.statusButtonTapped(in: self)
     }
@@ -44,25 +46,12 @@ class ToDoListCell: UITableViewCell {
     @IBAction func minusButtonPressed(_ sender: UIButton) {
         delegate?.minusButtonTapped(in: self)
     }
-    
-    
-    
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    
-    
 }
 
 extension ToDoListCell: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldDidChange(text: textField.text ?? "", in: self)
-//        print("\(textField.text)")
         return true
     }
     
