@@ -37,13 +37,24 @@ class SignUpController: UIViewController {
                            print(e.localizedDescription)
                            //pop-up screen
                        }else{
-                           self.performSegue(withIdentifier: K.goToSignIn, sender: self)
+                           // Set the display name for the user
+                           let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                           changeRequest?.displayName = self.fullNameField.text
+                           changeRequest?.commitChanges(completion: { error in
+                               if let error = error {
+                                   print("Error setting display name: \(error)")
+                               } else {
+                                   // Display name set successfully
+                                   self.performSegue(withIdentifier: K.goToSignIn, sender: self)
+                               }
+                           })
+                           
                        }
                    }
                }
            }
-           
-       }
+        
+    }
     
     
     
@@ -54,3 +65,5 @@ class SignUpController: UIViewController {
     }
 
 }
+
+

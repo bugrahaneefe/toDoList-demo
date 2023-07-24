@@ -11,13 +11,15 @@ import Firebase
 protocol ToDoListCellDelegate: AnyObject {
     func textFieldDidChange(text: String, in cell: ToDoListCell)
     func statusButtonTapped(in cell: ToDoListCell)
+    func minusButtonTapped(in cell: ToDoListCell)
+
 }
 
 class ToDoListCell: UITableViewCell {
     
     @IBOutlet weak var statusButton: UIButton!
     @IBOutlet weak var toDoListTextArea: UITextField!
-    
+    @IBOutlet weak var minusButton: UIButton!
     
     weak var delegate: ToDoListCellDelegate?
 
@@ -28,12 +30,23 @@ class ToDoListCell: UITableViewCell {
         toDoListTextArea.layer.borderWidth = 1.0
         
         toDoListTextArea.delegate = self
+   
+
     }
 
 
     @IBAction func statusButtonPressed(_ sender: UIButton) {
         delegate?.statusButtonTapped(in: self)
     }
+
+    
+    
+    @IBAction func minusButtonPressed(_ sender: UIButton) {
+        delegate?.minusButtonTapped(in: self)
+    }
+    
+    
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

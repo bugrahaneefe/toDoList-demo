@@ -14,10 +14,17 @@ class ToDoTaskController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let db = Firestore.firestore()
     var toDoList: [todolist] = []
-    
+
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let currentUserDisplayName = Auth.auth().currentUser?.displayName {
+            welcomeLabel.text = "Welcome! \n\(currentUserDisplayName)"
+        }else{
+            welcomeLabel.text = "Welcome!"
+        }
         
         navigationItem.hidesBackButton = true
         title = "To Do List"
@@ -81,11 +88,35 @@ class ToDoTaskController: UIViewController {
 
     }
     
+    func deleteFromFirestore(_ task: todolist){
+        
+        
+        db.collection(K.collectionName).document("\(task.textField)_\(task.sender)").delete { error in
+            if let error = error {
+                print("Error deleting task from Firestore: \(error)")
+            } else {
+                print("Task deleted successfully from Firestore")
+                if let index = self.toDoList.firstIndex(where: { $0.textField == task.textField && $0.sender == task.sender }) {
+                    self.toDoList.remove(at: index)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
     
     @IBAction func addButton(_ sender: UIButton) {
         toDoList.append(todolist(sender: (Auth.auth().currentUser?.email)!, textField: "Enter a task", doneStatus: false))
         tableView.reloadData()
     }
+    
+
+    
+    
     
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
         do {
@@ -114,6 +145,7 @@ extension ToDoTaskController: UITableViewDataSource{
         
         cell.toDoListTextArea.text = toDoList[indexPath.row].textField
         
+        
         if toDoList[indexPath.row].doneStatus == false{
             cell.statusButton.setImage(UIImage(systemName: K.circle), for: .normal)
             
@@ -122,12 +154,15 @@ extension ToDoTaskController: UITableViewDataSource{
             
         }
         
+        
+        
         return cell
     }
     
 }
 
 extension ToDoTaskController: ToDoListCellDelegate{
+    
     
     func textFieldDidChange(text: String, in cell: ToDoListCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
@@ -141,14 +176,22 @@ extension ToDoTaskController: ToDoListCellDelegate{
     func statusButtonTapped(in cell: ToDoListCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         toDoList[indexPath.row].doneStatus.toggle()
-        
+
         updateTaskInFirestore(toDoList[indexPath.row])
         print("Status Button Changed")
         
     }
     
     
+    func minusButtonTapped(in cell: ToDoListCell) {
+        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        deleteFromFirestore(toDoList[indexPath.row])
+        print("Minus Button Pressed")
+        
+    }
+    
 }
-
 
 

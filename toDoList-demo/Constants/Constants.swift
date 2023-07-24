@@ -10,6 +10,7 @@ import Foundation
 struct K{
     
 //    Names
+    static let name = "name"
     static let cellIdentifier =   "ReusableCell"
     static let cellClassName = "ToDoListCell"
     static let collectionName = "tasks"
