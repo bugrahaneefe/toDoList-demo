@@ -34,7 +34,6 @@ class ToDoListCell: UITableViewCell {
     @IBAction func statusButtonPressed(_ sender: UIButton) {
         delegate?.statusButtonTapped(in: self)
     }
-    
     /// Minus task button is pressed and calls delegate
     /// - Parameter sender: UIButton
     @IBAction func minusButtonPressed(_ sender: UIButton) {
@@ -43,7 +42,6 @@ class ToDoListCell: UITableViewCell {
 }
 
 extension ToDoListCell: UITextFieldDelegate {
-    
     /// Returns tasks to firebase when return is pressed
     /// - Parameter textField: UITextField
     /// - Returns: Boolean

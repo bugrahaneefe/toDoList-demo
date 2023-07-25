@@ -22,7 +22,7 @@ class ToDoTaskController: UIViewController {
     }
     @IBAction func addButton(_ sender: UIButton) {
         toDoList.append(Todolist(sender: (Auth.auth().currentUser?.email)!,
-                                 textField: NSLocalizedString("Enter a task", comment: ""),
+                                 textField: "Enter a task".locally(),
                                  doneStatus: false))
         tableView.reloadData()
     }
@@ -31,7 +31,7 @@ class ToDoTaskController: UIViewController {
             try Auth.auth().signOut()
             navigationController?.popToRootViewController(animated: true)
         } catch let signOutError as NSError {
-            self.showAlert(NSLocalizedString("Error signing out: ", comment: "")+"\(signOutError)")
+            self.showAlert("Error signing out: ".locally()+"\(signOutError)")
         }
     }
     func navigationItemEdit() {
@@ -40,15 +40,15 @@ class ToDoTaskController: UIViewController {
     }
     func tableViewEdit() {
         tableView.dataSource = self
-        tableView.register(UINib(nibName: K.cellClassName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+        tableView.register(UINib(nibName: Keys.cellClassName, bundle: nil), forCellReuseIdentifier: Keys.cellIdentifier)
     }
     /// Shows user's name at welcome label
     func showDisplayName() {
         if let currentUserDisplayName = Auth.auth().currentUser?.displayName {
-            welcomeLabel.text =  NSLocalizedString("Welcome! \n"+"\(currentUserDisplayName)", comment: "")
+            welcomeLabel.text =  "Welcome! \n".locally()+"\(currentUserDisplayName)"
 
         } else {
-            welcomeLabel.text = NSLocalizedString("Welcome!", comment: "")
+            welcomeLabel.text = "Welcome!".locally()
         }
     }
     /// Load task infos from database and updates UI
@@ -57,17 +57,17 @@ class ToDoTaskController: UIViewController {
         guard let currentUserEmail = Auth.auth().currentUser?.email else {
             return
         }
-        dtb.collection(K.collectionName)
-            .whereField(K.sender, isEqualTo: currentUserEmail).getDocuments { querySnapshot, error in
+        dtb.collection(Keys.collectionName)
+            .whereField(Keys.sender, isEqualTo: currentUserEmail).getDocuments { querySnapshot, error in
             if let error = error {
-                self.showAlert(NSLocalizedString("Error getting documents:", comment: "")+"\(error)")
+                self.showAlert("Error getting documents:".locally()+"\(error)")
             } else {
                 if let queryDocuments = querySnapshot?.documents {
                     for doc in queryDocuments {
                         let data = doc.data()
-                        if let senderData = data[K.sender] as? String,
-                           let textData = data[K.textField] as? String,
-                           let statusData = data[K.doneStatus] as? Bool {
+                        if let senderData = data[Keys.sender] as? String,
+                           let textData = data[Keys.textField] as? String,
+                           let statusData = data[Keys.doneStatus] as? Bool {
                             self.toDoList.append(Todolist(sender: senderData,
                                                           textField: textData,
                                                           doneStatus: statusData))
@@ -86,15 +86,15 @@ class ToDoTaskController: UIViewController {
     /// Updates information of tasks in database
     /// - Parameter task: Todolist
     func updateTaskInFirestore(_ task: Todolist) {
-        dtb.collection(K.collectionName).document("\(task.textField)_\(task.sender)").setData([
-            K.sender: task.sender,
-            K.textField: task.textField,
-            K.doneStatus: task.doneStatus
+        dtb.collection(Keys.collectionName).document("\(task.textField)_\(task.sender)").setData([
+            Keys.sender: task.sender,
+            Keys.textField: task.textField,
+            Keys.doneStatus: task.doneStatus
         ]) { error in
             if let error = error {
-                self.showAlert(NSLocalizedString("Error updating task in Firestore: ", comment: "")+"\(error)")
+                self.showAlert("Error updating task in Firestore: ".locally()+"\(error)")
             } else {
-                self.showAlert(NSLocalizedString("Task updated successfully in Firestore", comment: ""))
+                self.showAlert("Task updated successfully in Firestore".locally())
             }
         }
         tableView.reloadData()
@@ -102,11 +102,11 @@ class ToDoTaskController: UIViewController {
     /// Deletes information of tasks from database
     /// - Parameter task: Todolist
     func deleteFromFirestore(_ task: Todolist) {
-        dtb.collection(K.collectionName).document("\(task.textField)_\(task.sender)").delete { error in
+        dtb.collection(Keys.collectionName).document("\(task.textField)_\(task.sender)").delete { error in
             if let error = error {
-                self.showAlert(NSLocalizedString("Error deleting task from Firestore:", comment: "")+"\(error)")
+                self.showAlert("Error deleting task from Firestore:".locally()+"\(error)")
             } else {
-                self.showAlert(NSLocalizedString("Task deleted successfully from Firestore", comment: ""))
+                self.showAlert("Task deleted successfully from Firestore".locally())
                 if let index = self.toDoList
                     .firstIndex(where: { $0.textField == task.textField && $0.sender == task.sender }) {
                     self.toDoList.remove(at: index)
@@ -124,13 +124,14 @@ extension ToDoTaskController: UITableViewDataSource {
         return toDoList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as? ToDoListCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Keys.cellIdentifier,
+                                                    for: indexPath) as? ToDoListCell {
             cell.delegate = self
             cell.toDoListTextArea.text = toDoList[indexPath.row].textField
             if toDoList[indexPath.row].doneStatus == false {
-                cell.statusButton.setImage(UIImage(systemName: K.circle), for: .normal)
+                cell.statusButton.setImage(UIImage(systemName: Keys.circle), for: .normal)
             } else {
-                cell.statusButton.setImage(UIImage(systemName: K.circlefill), for: .normal)
+                cell.statusButton.setImage(UIImage(systemName: Keys.circlefill), for: .normal)
             }
             return cell
         }
@@ -156,14 +157,20 @@ extension ToDoTaskController: ToDoListCellDelegate {
     }
 }
 
-extension ToDoTaskController {
+extension UIViewController {
     /// Alert message
     /// - Parameter message: String
     func showAlert(_ message: String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
+        let action = UIAlertAction(title: "OK".locally(), style: .default) { _ in
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension String {
+    func locally() -> String {
+        return NSLocalizedString(self, comment: "")
     }
 }

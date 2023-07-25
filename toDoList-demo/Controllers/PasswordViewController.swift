@@ -20,28 +20,17 @@ class PasswordViewController: UIViewController {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 self.showAlert(
-                    NSLocalizedString("Error sending password reset email: ",
-                                      comment: "")+"\(error.localizedDescription)")
+                    "Error sending password reset email: ".locally()+"\(error.localizedDescription)")
             } else {
                 self.showAlert()
             }
         }
     }
     func showAlert() {
-            let alert = UIAlertController(title: "",
-                                          message: NSLocalizedString("Reset link is sent to your mail", comment: ""),
-                                          preferredStyle: .alert)
-            let action = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
-            }
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-        }
-}
-
-extension PasswordViewController {
-    func showAlert(_ message: String) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
+        let alert = UIAlertController(title: "",
+                                      message: "Reset link is sent to your mail".locally(),
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK".locally(), style: .default) { _ in
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)

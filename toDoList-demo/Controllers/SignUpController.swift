@@ -30,10 +30,9 @@ class SignUpController: UIViewController {
                            changeRequest?.displayName = self.fullNameField.text
                            changeRequest?.commitChanges(completion: { error in
                                if let error = error {
-                                   self.showAlert(NSLocalizedString("Error setting display name: ",
-                                                                    comment: "")+"\(error)")
+                                   self.showAlert("Error setting display name: ".locally()+"\(error)")
                                } else {
-                                   self.performSegue(withIdentifier: K.goToSignIn, sender: self)
+                                   self.performSegue(withIdentifier: Keys.goToSignIn, sender: self)
                                }
                            })
                        }
@@ -42,21 +41,10 @@ class SignUpController: UIViewController {
            }
     }
     @IBAction func goSignInButton(_ sender: UIButton) {
-        performSegue(withIdentifier: K.goToSignIn, sender: self)
+        performSegue(withIdentifier: Keys.goToSignIn, sender: self)
     }
     func navigationItemEdit() {
         navigationItem.backButtonTitle = ""
         navigationItem.hidesBackButton = true
-    }
-}
-extension SignUpController {
-    /// Alert message
-    /// - Parameter message: String
-    func showAlert(_ message: String) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
-        }
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
 }
