@@ -1,6 +1,0 @@
-framework module Pods_toDoList_demo {
-  umbrella header "Pods-toDoList-demo-umbrella.h"
-
-  export *
-  module * { export * }
-}
