@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		975548E92A7112E000687DE2 /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 975548E82A7112DF00687DE2 /* SwiftLintFramework */; };
-		975548EB2A7112E000687DE2 /* swiftlint in Frameworks */ = {isa = PBXBuildFile; productRef = 975548EA2A7112E000687DE2 /* swiftlint */; };
+		975548ED2A71154D00687DE2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 975548EC2A71154D00687DE2 /* FirebaseAuth */; };
+		975548EF2A71154D00687DE2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 975548EE2A71154D00687DE2 /* FirebaseFirestore */; };
+		975548F12A71154D00687DE2 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 975548F02A71154D00687DE2 /* FirebaseFirestoreCombine-Community */; };
+		975548F32A71154D00687DE2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 975548F22A71154D00687DE2 /* FirebaseFirestoreSwift */; };
 		97987E8E2A6BC8B600AE5E54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97987E8D2A6BC8B600AE5E54 /* Constants.swift */; };
 		97987E922A6BD1A500AE5E54 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97987E912A6BD1A500AE5E54 /* PasswordViewController.swift */; };
 		97AD1AE22A6E7B7A00652728 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97AD1AE02A6E7B7A00652728 /* Localizable.strings */; };
@@ -25,11 +27,7 @@
 		97D4EEFC2A666AE500315433 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D4EEFB2A666AE500315433 /* ToDoList.swift */; };
 		97D4EEFF2A66724F00315433 /* ToDoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D4EEFD2A66724F00315433 /* ToDoListCell.swift */; };
 		97D4EF002A66724F00315433 /* ToDoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97D4EEFE2A66724F00315433 /* ToDoListCell.xib */; };
-		97D4EF032A66814200315433 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 97D4EF022A66814200315433 /* FirebaseAuth */; };
-		97D4EF052A66814200315433 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 97D4EF042A66814200315433 /* FirebaseFirestore */; };
-		97D4EF072A66814200315433 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 97D4EF062A66814200315433 /* FirebaseFirestoreSwift */; };
 		97D4EF092A66818300315433 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97D4EF082A66818300315433 /* GoogleService-Info.plist */; };
-		A3C3E309DACDC3B092CF08D9 /* Pods_toDoList_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF34DD81FD626B0EFB5D29F /* Pods_toDoList_demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,12 +59,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3C3E309DACDC3B092CF08D9 /* Pods_toDoList_demo.framework in Frameworks */,
-				975548EB2A7112E000687DE2 /* swiftlint in Frameworks */,
-				97D4EF032A66814200315433 /* FirebaseAuth in Frameworks */,
-				97D4EF052A66814200315433 /* FirebaseFirestore in Frameworks */,
-				97D4EF072A66814200315433 /* FirebaseFirestoreSwift in Frameworks */,
-				975548E92A7112E000687DE2 /* SwiftLintFramework in Frameworks */,
+				975548EF2A71154D00687DE2 /* FirebaseFirestore in Frameworks */,
+				975548ED2A71154D00687DE2 /* FirebaseAuth in Frameworks */,
+				975548F12A71154D00687DE2 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				975548F32A71154D00687DE2 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,11 +166,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97D4EEE82A65672700315433 /* Build configuration list for PBXNativeTarget "toDoList-demo" */;
 			buildPhases = (
-				F4497A2BF16A657000B2E404 /* [CP] Check Pods Manifest.lock */,
 				97D4EED02A65672500315433 /* Sources */,
 				97D4EED12A65672500315433 /* Frameworks */,
 				97D4EED22A65672500315433 /* Resources */,
-				81ED3F4F48D3D3402071FC59 /* [CP] Embed Pods Frameworks */,
 				97AD1AE42A6E7EC500652728 /* ShellScript */,
 			);
 			buildRules = (
@@ -183,11 +177,10 @@
 			);
 			name = "toDoList-demo";
 			packageProductDependencies = (
-				97D4EF022A66814200315433 /* FirebaseAuth */,
-				97D4EF042A66814200315433 /* FirebaseFirestore */,
-				97D4EF062A66814200315433 /* FirebaseFirestoreSwift */,
-				975548E82A7112DF00687DE2 /* SwiftLintFramework */,
-				975548EA2A7112E000687DE2 /* swiftlint */,
+				975548EC2A71154D00687DE2 /* FirebaseAuth */,
+				975548EE2A71154D00687DE2 /* FirebaseFirestore */,
+				975548F02A71154D00687DE2 /* FirebaseFirestoreCombine-Community */,
+				975548F22A71154D00687DE2 /* FirebaseFirestoreSwift */,
 			);
 			productName = "toDoList-demo";
 			productReference = 97D4EED42A65672500315433 /* toDoList-demo.app */;
@@ -248,23 +241,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		81ED3F4F48D3D3402071FC59 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-toDoList-demo/Pods-toDoList-demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-toDoList-demo/Pods-toDoList-demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-toDoList-demo/Pods-toDoList-demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		97AD1AE42A6E7EC500652728 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,28 +257,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
-		};
-		F4497A2BF16A657000B2E404 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-toDoList-demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -405,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -459,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -484,6 +438,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -512,6 +467,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,27 +524,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		975548E82A7112DF00687DE2 /* SwiftLintFramework */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 975548E72A7112DF00687DE2 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = SwiftLintFramework;
-		};
-		975548EA2A7112E000687DE2 /* swiftlint */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 975548E72A7112DF00687DE2 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = swiftlint;
-		};
-		97D4EF022A66814200315433 /* FirebaseAuth */ = {
+		975548EC2A71154D00687DE2 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97D4EF012A66814200315433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		97D4EF042A66814200315433 /* FirebaseFirestore */ = {
+		975548EE2A71154D00687DE2 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97D4EF012A66814200315433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		97D4EF062A66814200315433 /* FirebaseFirestoreSwift */ = {
+		975548F02A71154D00687DE2 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97D4EF012A66814200315433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		975548F22A71154D00687DE2 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97D4EF012A66814200315433 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;

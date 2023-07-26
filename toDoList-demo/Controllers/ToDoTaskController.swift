@@ -67,7 +67,7 @@ class ToDoTaskController: UIViewController {
         dtb.collection(Keys.collectionName)
             .whereField(Keys.sender, isEqualTo: currentUserEmail).getDocuments { querySnapshot, error in
             if let error = error {
-                self.showAlert(String(format: "err.get.doc".locally(),error))
+                self.showAlert(String(format: "err.get.doc".locally(),error as CVarArg))
             } else {
                 if let queryDocuments = querySnapshot?.documents {
                     for doc in queryDocuments {
@@ -102,7 +102,7 @@ class ToDoTaskController: UIViewController {
             Keys.doneStatus: task.doneStatus
         ]) { error in
             if let error = error {
-                self.showAlert(String(format:"err.update.firestore".locally(),error))
+                self.showAlert(String(format:"err.update.firestore".locally(),error as CVarArg))
             } else {
                 self.showAlert("succ.update.firestore".locally())
             }
@@ -115,7 +115,7 @@ class ToDoTaskController: UIViewController {
     func deleteFromFirestore(_ task: Todolist) {
         dtb.collection(Keys.collectionName).document("\(task.textField)_\(task.sender)").delete { error in
             if let error = error {
-                self.showAlert(String(format:"err.delete.firestore".locally(),error))
+                self.showAlert(String(format:"err.delete.firestore".locally(),error as CVarArg))
             } else {
                 self.showAlert("succ.delete.firestore".locally())
                 if let index = self.toDoList
