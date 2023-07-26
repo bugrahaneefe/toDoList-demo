@@ -6,26 +6,22 @@
 //
 
 import UIKit
-import CLTypingLabel
 
 class ViewController: UIViewController {
-
-    //Cocoapods
-    @IBOutlet weak var appTitle: CLTypingLabel!
+    @IBOutlet weak var appTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        appTitle.text = "Get Things Done With TODo"
-
-        //navigation controller customization
-        navigationItem.backButtonTitle = ""
-        
+        appTitle.text = "main.label".locally()
+        navigationItemEdit()
     }
-
+    
     @IBAction func getStartedPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: K.signInFromBeg, sender: self)
+        performSegue(withIdentifier: Keys.signInFromBeg, sender: self)
+    }
+    
+    func navigationItemEdit() {
+        navigationItem.backButtonTitle = ""
     }
     
 }
-

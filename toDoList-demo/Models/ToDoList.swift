@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct todolist {
+struct Todolist {
     let sender: String
     var textField: String
     var doneStatus: Bool
-    
 }
