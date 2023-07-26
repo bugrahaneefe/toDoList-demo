@@ -12,7 +12,6 @@ protocol ToDoListCellDelegate: AnyObject {
     func textFieldDidChange(text: String, in cell: ToDoListCell)
     func statusButtonTapped(in cell: ToDoListCell)
     func minusButtonTapped(in cell: ToDoListCell)
-
 }
 
 class ToDoListCell: UITableViewCell {
@@ -34,14 +33,17 @@ class ToDoListCell: UITableViewCell {
     @IBAction func statusButtonPressed(_ sender: UIButton) {
         delegate?.statusButtonTapped(in: self)
     }
+    
     /// Minus task button is pressed and calls delegate
     /// - Parameter sender: UIButton
     @IBAction func minusButtonPressed(_ sender: UIButton) {
         delegate?.minusButtonTapped(in: self)
     }
+    
 }
 
 extension ToDoListCell: UITextFieldDelegate {
+    
     /// Returns tasks to firebase when return is pressed
     /// - Parameter textField: UITextField
     /// - Returns: Boolean
@@ -49,4 +51,5 @@ extension ToDoListCell: UITextFieldDelegate {
         delegate?.textFieldDidChange(text: textField.text ?? "", in: self)
         return true
     }
+    
 }

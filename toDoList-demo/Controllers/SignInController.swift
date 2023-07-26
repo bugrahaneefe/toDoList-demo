@@ -12,13 +12,16 @@ class SignInController: UIViewController {
 
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItemEdit()
     }
+    
     @IBAction func toSignUpButton(_ sender: UIButton) {
         performSegue(withIdentifier: Keys.goToSignUp, sender: self)
     }
+    
     /// Checks authentication and if it is valid, let user sign in
     /// - Parameter sender: UIButton
     @IBAction func toSignInButton(_ sender: UIButton) {
@@ -26,17 +29,20 @@ class SignInController: UIViewController {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
                 guard let strongSelf = self else { return }
                 if let error = error {
-                    self?.showAlert("\(error.localizedDescription)")
+                    self?.showAlert(error.localizedDescription)
                 } else {
                     strongSelf.performSegue(withIdentifier: Keys.goToToDoList, sender: self)
                 }
             }
         }
     }
+    
     @IBAction func forgotPasswordPressed(_ sender: UIButton) {
         performSegue(withIdentifier: Keys.toPasswordPage, sender: self)
     }
+    
     func navigationItemEdit() {
         navigationItem.backButtonTitle = ""
     }
+    
 }
