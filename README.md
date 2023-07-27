@@ -59,6 +59,6 @@ That's a basic to do list app that you can store or delete your plannings and ta
 
 Buğrahan EFE - befe19@ku.edu.tr
 
-Project Link: [[https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)](https://github.com/bugrahaneefe/toDoList-demo/tree/development)
+Project Link: (https://github.com/bugrahaneefe/toDoList-demo/tree/development)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
