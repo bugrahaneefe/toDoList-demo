@@ -1,62 +1,46 @@
-<br />
-<div align="center">
-  <h3 align="center">To Do List App</h3>
-</div>
+# TO DO LIST APP
 
-## About The Project
+![Xcode](https://img.shields.io/badge/Xcode-14.3-blue) ![Swift](https://img.shields.io/badge/Swift-5.2-blue) ![Firebase](https://img.shields.io/badge/Firebase-blue) ![IOS](https://img.shields.io/badge/IOS-13.0-blue)
 
-That's a basic to do list app that you can store or delete your plannings and tasks!
+Using;
 
-### Prerequisites
+  - MVC pattern
+  - Firebase for storage
 
-- Minimum Xcode version 14.3 to make it work properly
-- IOS Deployment version must be minimum 13.0
 
-### Installation
+# Screenshots
+<table>
+  <tr>
+    <td>Sign In Screen</td>
+     <td>Sign Up Screen</td>
+     <td>Tasks List</td>
+    <td>Password Reset List</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/bugrahaneefe/toDoList-demo/assets/114180327/aa6c7c53-dd11-4a62-8260-78f68d90354e" width="350" /></td>
+    <td><img src="https://github.com/bugrahaneefe/toDoList-demo/assets/114180327/540d4335-d735-4a10-b687-c07f1a45efda" width="350" /></td>
+    <td><img src="https://github.com/bugrahaneefe/toDoList-demo/assets/114180327/735ead9a-4eac-45fd-92f2-abda375e92cb" width="350" /></td>
+    <td><img src="https://github.com/bugrahaneefe/toDoList-demo/assets/114180327/cbc5c2d4-36de-418a-9cab-a85fc66c7a78" width="350" /></td>
+  </tr>
+ </table>
 
-1. Get the requirements done
-2. Clone the repo
-3. Make sure that you are installed Firebase through Swift Package Manager:
-     - Create firebase project
-     - Register your app with firebase
-     - Add firebase configuration file
-     - Add firebase's sdk's to xcode by spm:
-       - You need to install the following:
-         - Firebase auth
-         - Firebase firestore
-         - Firebase firestore swift
-         - Firebase firestore combine-community
-     - Initialize firebase in your project
-
-## Usage
-
--Sign In Page:
-<br />
-<div align="center">
-<img width="792" alt="Screenshot 2023-07-27 at 10 49 49" src="https://github.com/bugrahaneefe/toDoList-demo/assets/114180327/539940aa-1034-44d1-a3c9-e961e5f9b327">
-</div>
-
--Sign Up Page:
-<br />
-<div align="center">
-<img width="792" alt="Screenshot 2023-07-27 at 10 49 59" src="https://github.com/bugrahaneefe/toDoList-demo/assets/114180327/b25b3e3c-a810-487a-bd0c-40993bd25686">
-</div>
-
--Task Page:
-<br />
-<div align="center">
-<img width="792" alt="Screenshot 2023-07-27 at 10 55 13" src="https://github.com/bugrahaneefe/toDoList-demo/assets/114180327/2ec9b69e-4935-475c-8e9c-a7cf03344d4a">
-</div>
-
--Password Reset Page:
-<br />
-<div align="center">
-<img width="792" alt="Screenshot 2023-07-27 at 10 52 05" src="https://github.com/bugrahaneefe/toDoList-demo/assets/114180327/302062d6-4215-4705-b86c-b03398ff96c9">
-</div>
-
+ 
 <!-- CONTACT -->
 ## Contact
 
 Buğrahan EFE - befe19@ku.edu.tr
 
 Project Link: (https://github.com/bugrahaneefe/toDoList-demo/tree/development)
+
+
+
+
+
+
+
+
+
+
+
+
+
